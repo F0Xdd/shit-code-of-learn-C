@@ -3,38 +3,38 @@ void printboard(char bd[3][3]);
 
 int main()
 {
-    const int size = 3;     //ÆåÅÌ´óĞ¡
-    const int N = 9;        //×î´ó²½Êı
-    int step = 0;           //²½Êı¼ÆÊıÆ÷
-    char board[size][size]; //ÆåÅÌ
-    int i,j;                //ĞĞÁĞ¿ØÖÆ
-    int numofO, numofX;     //ÅĞ¶Ï²ÎÊı
-    int result = -1;    //-1Æ½¾Ö£¬1£ºXÓ®£¬0£ºOÓ®
+    const int size = 3;     //æ£‹ç›˜å¤§å°
+    const int N = 9;        //æœ€å¤§æ­¥æ•°
+    int step = 0;           //æ­¥æ•°è®¡æ•°å™¨
+    char board[size][size]; //æ£‹ç›˜
+    int i,j;                //è¡Œåˆ—æ§åˆ¶
+    int numofO, numofX;     //åˆ¤æ–­å‚æ•°
+    int result = -1;    //-1å¹³å±€ï¼Œ1ï¼šXèµ¢ï¼Œ0ï¼šOèµ¢
     for(i=0;i<size;i++){
         for(j=0;j<size;j++){
             board[i][j] = '*';
         }
     }
-    //³õÊ¼»¯Êä³ö
+    //åˆå§‹åŒ–è¾“å‡º
     printboard(board);
-    //¿ªÊ¼ÓÎÏ·
+    //å¼€å§‹æ¸¸æˆ
     while(step<N){
-        //¶ÁÈë
+        //è¯»å…¥
         if(step%2 == 0){
-            printf("OµÄ»ØºÏ:¼¸ĞĞ¼¸ÁĞ\n");
+            printf("Oçš„å›åˆ:å‡ è¡Œå‡ åˆ—(1-3)\n");
             scanf("%d %d", &i, &j);
             board[--i][--j] = 'O';
-            //Êä³ö
+            //è¾“å‡º
             printboard(board);
         } else {
-            printf("XµÄ»ØºÏ:¼¸ĞĞ¼¸ÁĞ\n");
+            printf("Xçš„å›åˆ:å‡ è¡Œå‡ åˆ—(1-3)\n");
             scanf("%d %d", &i, &j);
             board[--i][--j] = 'X';
-            //Êä³ö
+            //è¾“å‡º
             printboard(board);
         }
         
-        //ÅĞ¶ÏĞĞ
+        //åˆ¤æ–­è¡Œ
         for(i=0; i<size && result==-1; i++){
             numofO = numofX = 0;
             for(j=0; j<size; j++){
@@ -56,7 +56,7 @@ int main()
             break;
         }
         
-        //ÅĞ¶ÏÁĞ
+        //åˆ¤æ–­åˆ—
         for(j=0; j<size && result==-1; j++){
             numofO = numofX = 0;
             for(i=0; i<size; i++){
@@ -78,7 +78,7 @@ int main()
             break;
         }
 
-        //ÅĞ¶Ï¶Ô½ÇÏß
+        //åˆ¤æ–­å¯¹è§’çº¿
         if((board[0][0]=='O'&&board[1][1]=='O'&&board[2][2]=='O')){
             result = 0;
         }
@@ -98,16 +98,16 @@ int main()
 
         step++;
     }
-    //¾ÖÊÆÅĞ¶Ï
+    //å±€åŠ¿åˆ¤æ–­
     switch(result){
         case 1:
-            printf("XÓ®ÁË£¡\n");
+            printf("Xèµ¢äº†ï¼\n");
             break;
         case 0:
-            printf("OÓ®ÁË£¡\n");
+            printf("Oèµ¢äº†ï¼\n");
             break;
         case -1:
-            printf("Æ½¾Ö£¡\n");
+            printf("å¹³å±€ï¼\n");
             break;
         default:
             printf("Error!\n");
@@ -116,7 +116,7 @@ int main()
     return 0;
 }
 
-//´òÓ¡ÆåÅÌ
+//æ‰“å°æ£‹ç›˜
 void printboard(char bd[3][3])
 {   
     int i, j;
